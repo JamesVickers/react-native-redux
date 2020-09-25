@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import {connect} from 'react-redux'
+import allActions from '../actions'
 
-const TodoList = ({ todos, toggleTodo }) => {
+
+const TodoList = () => {
+    const dispatch = useDispatch()
+    const todos = useSelector(state => state.todos);
+
   return (
       <View>
         {todos.map(todo => 
-            <TouchableOpacity key={todo.id} onPress={() => toggleTodo(todo.id)}>
+            <TouchableOpacity key={todo.id} onPress={() => dispatch(allActions.todosActions.toggleTodo(todo.id))}>
                 <Text style={{fontSize:24, textDecorationLine: todo.completed ? 'line-through' : 'none'}}>{todo.text}</Text>
             </TouchableOpacity>
         )}
@@ -14,13 +20,6 @@ const TodoList = ({ todos, toggleTodo }) => {
   )
 };
 
-const mapStateToProps = state => ({
-    todos: state.todos
-})
 
-const mapDispatchToProps = dispatch => ({
-    toggleTodo: id => dispatch({ type: 'TOGGLE_TODO', id})
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
+export default connect()(TodoList)
 

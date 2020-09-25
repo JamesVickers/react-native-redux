@@ -6,7 +6,15 @@ const addTodo = (id, text) => {
     }
   }
 
+  const toggleTodo = (id) => {
+    return {
+      type: 'TOGGLE_TODO',
+      id: id,
+    }
+  }
   
+
 export default {
-    addTodo
+    addTodo,
+    toggleTodo
 }

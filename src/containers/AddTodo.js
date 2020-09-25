@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {useDispatch} from 'react-redux';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
 import allActions from '../actions'
 
+
 const AddTodo = () => {
   const [text, setText] = useState('');
-
   const dispatch = useDispatch()
   
   return (
@@ -15,7 +15,6 @@ const AddTodo = () => {
         <TextInput
           placeholder="Add a new item.."
           style={{backgroundColor: '#FFF', height: 50, flex: 1, padding: 10}}
-          // value={text}
           onChangeText={(text) => {
             setText(text);
           }}>
