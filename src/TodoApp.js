@@ -4,42 +4,38 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  StatusBar
+  StatusBar,
 } from 'react-native';
-import AddTodo from './containers/AddTodo'
-import TodoList from './components/TodoList'
-
+import AddTodo from './components/AddTodo';
+import TodoList from './components/TodoList';
+import VisibilityButtons from './components/VisibilityButtons';
 
 const TodoApp = () => {
-  
-    return (
-      <>
-        <StatusBar barStyle="dark-content" />
-        {/* <SafeAreaView> */}
-          {/* <ScrollView */}
-            {/* contentInsetAdjustmentBehavior="automatic"
+  return (
+    <>
+      <StatusBar barStyle="dark-content" />
+      {/* <SafeAreaView> */}
+      {/* <ScrollView */}
+      {/* contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}> */}
-    
-            <View style={ styles.body }>
-                <AddTodo />
-            </View>
 
-            <View>
-                <TodoList />
-            </View>
+      <View style={styles.body}>
+        <AddTodo />
+        <TodoList />
+        <VisibilityButtons />
+      </View>
 
-          {/* </ScrollView> */}
-        {/* </SafeAreaView> */}
-      </>
-    );
+      {/* </ScrollView> */}
+      {/* </SafeAreaView> */}
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    paddingTop: 40
-  }
+    margin: 30,
+  },
 });
-
 
 export default TodoApp;

@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
-import { v4 as uuidv4 } from 'uuid';
-import allActions from '../actions'
-
+import {v4 as uuidv4} from 'uuid';
+import allActions from '../actions';
 
 const AddTodo = () => {
   const [text, setText] = useState('');
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   return (
     <>
-      <View style={{flexDirection: 'row', marginHorizontal: 20}}>
+      <View style={{flexDirection: 'row'}}>
         <TextInput
           placeholder="Add a new item.."
           style={{backgroundColor: '#FFF', height: 50, flex: 1, padding: 10}}
@@ -20,7 +19,10 @@ const AddTodo = () => {
           }}>
           {text}
         </TextInput>
-        <TouchableOpacity onPress={() => dispatch(allActions.todosActions.addTodo(uuidv4(), text))}>
+        <TouchableOpacity
+          onPress={() =>
+            dispatch(allActions.todosActions.addTodo(uuidv4(), text))
+          }>
           <View
             style={{
               height: 50,
@@ -35,6 +37,5 @@ const AddTodo = () => {
     </>
   );
 };
-
 
 export default AddTodo;
