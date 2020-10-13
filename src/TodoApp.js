@@ -1,32 +1,75 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   StatusBar,
+  TextInput,
+  TouchableOpacity,
+  Text,
 } from 'react-native';
-import AddTodo from './components/AddTodo';
-import TodoList from './components/TodoList';
-import VisibilityButtons from './components/VisibilityButtons';
+import store from './store';
+import {addTodo, toggleTodo} from './actions';
 
 const TodoApp = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
+  const [text, setText] = useState('');
+
+  console.log('store.getState(): ', store.getState());
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      {/* <SafeAreaView> */}
-      {/* <ScrollView */}
-      {/* contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}> */}
-
       <View style={styles.body}>
-        <AddTodo />
-        <TodoList />
-        <VisibilityButtons />
-      </View>
+        <View>
+          <TextInput
+            placeholder="Add a new item.."
+            onChangeText={(text) => {
+              setText(text);
+            }}>
+            {text}
+          </TextInput>
+          <TouchableOpacity onPress={() => dispatch(addTodo(text))}>
+            <View>
+              <Text>AddTodo component</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
 
-      {/* </ScrollView> */}
-      {/* </SafeAreaView> */}
+        <View>
+          <Text>TodoList component</Text>
+          {todos?.map((todo) => (
+            <TouchableOpacity
+              key={todo.id}
+              onPress={() => dispatch(toggleTodo(todo.todoId))}>
+              <Text
+                style={{
+                  textDecorationLine: todo.completed ? 'line-through' : 'none',
+                }}>
+                {todo.text}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* <View>
+          <Text>Filter todos:</Text>
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity>
+              <Text style={{textAlign: 'center'}}>All</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+            // onPress={() => dispatch(allActions.visibilityActions.showIncompletedTodos())}
+            >
+              <Text style={{textAlign: 'center'}}>Incompleted</Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text style={{textAlign: 'center'}}>Completed</Text>
+            </TouchableOpacity>
+          </View>
+        </View> */}
+      </View>
     </>
   );
 };
