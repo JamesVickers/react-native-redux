@@ -8,15 +8,24 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import store from './store';
-import {addTodo, toggleTodo} from './actions';
+import {getTodosByVisibilityFilter} from './selectors';
+import {
+  addTodo,
+  toggleTodo,
+  setVisibilityFilter,
+  VisibilityFilters,
+} from './actions';
+
+const {SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED} = VisibilityFilters;
 
 const TodoApp = () => {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
+  const visibilityFilter = useSelector((state) => state.visibilityFilter);
+  const visibletodos = getTodosByVisibilityFilter(todos, visibilityFilter);
   const [text, setText] = useState('');
 
-  console.log('store.getState(): ', store.getState());
+  // console.log('store.getState(): ', store.getState());
 
   return (
     <>
@@ -39,7 +48,7 @@ const TodoApp = () => {
 
         <View>
           <Text>TodoList component</Text>
-          {todos?.map((todo) => (
+          {visibletodos?.map((todo) => (
             <TouchableOpacity
               key={todo.id}
               onPress={() => dispatch(toggleTodo(todo.todoId))}>
@@ -53,22 +62,23 @@ const TodoApp = () => {
           ))}
         </View>
 
-        {/* <View>
+        <View>
           <Text>Filter todos:</Text>
-          <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity>
-              <Text style={{textAlign: 'center'}}>All</Text>
+          <View>
+            <TouchableOpacity
+              onPress={() => dispatch(setVisibilityFilter(SHOW_ALL))}>
+              <Text>All</Text>
             </TouchableOpacity>
             <TouchableOpacity
-            // onPress={() => dispatch(allActions.visibilityActions.showIncompletedTodos())}
-            >
-              <Text style={{textAlign: 'center'}}>Incompleted</Text>
+              onPress={() => dispatch(setVisibilityFilter(SHOW_ACTIVE))}>
+              <Text>Active</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <Text style={{textAlign: 'center'}}>Completed</Text>
+            <TouchableOpacity
+              onPress={() => dispatch(setVisibilityFilter(SHOW_COMPLETED))}>
+              <Text>Completed</Text>
             </TouchableOpacity>
           </View>
-        </View> */}
+        </View>
       </View>
     </>
   );

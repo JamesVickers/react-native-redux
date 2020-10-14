@@ -12,8 +12,8 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE',
+  SHOW_COMPLETED: 'SHOW_COMPLETED',
 };
 
 /*
@@ -31,12 +31,15 @@ export const addTodo = (text) => ({
 });
 
 export const toggleTodo = (todoId) => ({
-  type: 'TOGGLE_TODO',
+  type: TOGGLE_TODO,
   payload: {
     todoId,
   },
 });
 
-// export function setVisibilityFilter(filter) {
-//   return {type: SET_VISIBILITY_FILTER, filter};
-// }
+export const setVisibilityFilter = (filter) => ({
+  type: SET_VISIBILITY_FILTER,
+  payload: {
+    filter,
+  },
+});

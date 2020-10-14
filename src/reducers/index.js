@@ -5,12 +5,13 @@ import {
   SET_VISIBILITY_FILTER,
   VisibilityFilters,
 } from '../actions';
+
 const {SHOW_ALL} = VisibilityFilters;
 
 function visibilityFilter(state = SHOW_ALL, action) {
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
-      return action.filter;
+      return action.payload.filter;
     default:
       return state;
   }
