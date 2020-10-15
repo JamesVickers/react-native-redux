@@ -1,26 +1,31 @@
 import 'react-native-gesture-handler';
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {ThemeProvider} from './src/context/ThemeContext';
+import theme from './src/styles/ThemeStyles';
 import TodoApp from './src/components/TodoApp';
 import HomeScreen from './src/components/HomeScreen';
 import store from './src/store';
 
 const Stack = createStackNavigator();
 
-class App extends Component {
-  render() {
-    return (
-      <>
-        <Provider store={store}>
+const App = () => {
+  // const [lightTheme, setLightTheme] = useState(true);
+  // const toggleTheme = () => setTheme((preState = !prevState));
+
+  return (
+    <>
+      <Provider store={store}>
+        <ThemeProvider value={theme}>
           <NavigationContainer>
             <Stack.Navigator
               screenOptions={{
                 headerStyle: {
-                  backgroundColor: '#f4511e',
+                  backgroundColor: 'rgba(244, 81, 30, 1)',
                 },
-                headerTintColor: '#fff',
+                headerTintColor: 'rgba(255, 255, 255, 1)',
                 headerTitleStyle: {
                   fontWeight: 'bold',
                 },
@@ -35,10 +40,10 @@ class App extends Component {
               <Stack.Screen name="Todos" component={TodoApp} />
             </Stack.Navigator>
           </NavigationContainer>
-        </Provider>
-      </>
-    );
-  }
-}
+        </ThemeProvider>
+      </Provider>
+    </>
+  );
+};
 
 export default App;

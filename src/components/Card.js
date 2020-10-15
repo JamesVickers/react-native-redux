@@ -3,8 +3,8 @@ import styled from 'styled-components/native';
 
 const StyledCard = styled.View`
   flex-grow: ${(props) => props.flexGrow};
-  margin: 2.5% 0 2.5% 0;
-  padding: 5%;
+  margin: 3% 0 3% 0;
+  padding: 6%;
   border: solid 1px #f4511e;
 `;
 

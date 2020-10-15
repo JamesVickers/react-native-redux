@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import {
   ADD_TODO,
   TOGGLE_TODO,
+  REMOVE_TODO,
   SET_VISIBILITY_FILTER,
   VisibilityFilters,
 } from '../actions';
@@ -34,6 +35,11 @@ function todos(state = [], action) {
           ? {...todo, completed: !todo.completed}
           : todo,
       );
+    case REMOVE_TODO:
+      const filteredTodos = state.filter(
+        (todo) => todo.todoId !== action.payload.todoId,
+      );
+      return [...filteredTodos];
     default:
       return state;
   }

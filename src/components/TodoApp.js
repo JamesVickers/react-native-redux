@@ -1,6 +1,7 @@
-import React from 'react';
-import {StatusBar} from 'react-native';
+import React, {useContext} from 'react';
+import {StatusBar, Text} from 'react-native';
 import styled from 'styled-components/native';
+import ThemeContext from '../context/ThemeContext';
 import Card from './Card';
 import ScrollViewCard from './ScrollViewCard';
 import AddTodo from './AddTodo';
@@ -9,10 +10,11 @@ import TodosFilter from './TodosFilter';
 
 const StyledSafeAreaView = styled.SafeAreaView`
   flex: 1;
-  margin: 5%;
+  margin: 3%;
 `;
 
 const TodoApp = () => {
+  const theme = useContext(ThemeContext);
   // console.log('store.getState(): ', store.getState());
 
   return (
@@ -20,6 +22,7 @@ const TodoApp = () => {
       <StatusBar barStyle="dark-content" />
       <StyledSafeAreaView>
         <Card>
+          <Text>Theme: {theme.lightTheme.type}</Text>
           <AddTodo />
         </Card>
         <Card>
