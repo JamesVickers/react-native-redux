@@ -1,0 +1,44 @@
+// {
+//       "compilerOptions": {
+//         "target": "es2015",
+//         "module": "es2015",
+//        "noEmit": true,
+//        "sourceMap": true,
+//        "experimentalDecorators": true,
+//         "jsx": "react-native",
+//        "lib": ["dom", "es2015", "es2016"],
+//        "allowSyntheticDefaultImports": true,
+//         "moduleResolution": "node",
+//        "noEmitHelpers": true,
+//        "importHelpers": true,
+//        "strict": false,
+//        "noImplicitAny": false,
+//        "noImplicitReturns": true,
+//        "noUnusedLocals": true
+//   },
+//   "exclude": [
+//     "node_modules"
+//   ]
+// }
+
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "jsx": "react",
+    "lib": ["es6"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitAny": false,
+    "strict": false,
+    "target": "esnext",
+    "resolveJsonModule": true,
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+  ]
+}
