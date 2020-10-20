@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {ThemeProvider} from './src/context/ThemeContext';
 import theme from './src/styles/ThemeStyles';
+import tailwind from './src/styles/ThemeStyles';
 import TodoApp from './src/components/TodoApp';
 import HomeScreen from './src/components/HomeScreen';
 import store from './src/store';
@@ -29,7 +30,8 @@ const App = () => {
                 headerTitleStyle: {
                   fontWeight: 'bold',
                 },
-              }}>
+              }}
+              >
               <Stack.Screen
                 name="Home"
                 component={HomeScreen}
