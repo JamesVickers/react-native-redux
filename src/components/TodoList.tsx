@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {ScrollView, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {getTodosByVisibilityFilter} from '../selectors';
-import {toggleTodo, removeTodo} from '../actions';
+import {toggleTodo, removeTodo} from '../types/actions';
 
 const TodoList = () => {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ const TodoList = () => {
   const visibletodos = getTodosByVisibilityFilter(todos, visibilityFilter);
 
   const isOdd = (num) => num % 2;
+  console.log(todos)
 
   return (
     <>

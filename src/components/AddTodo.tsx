@@ -8,6 +8,12 @@ const AddTodo = () => {
   const [text, setText] = useState('');
   // console.log('store.getState(): ', store.getState());
 
+  const dummyTodo = {
+    completed: false,
+    text: "test todo",
+    todoId: 1,
+  }
+
   return (
     <>
       <TextInput
@@ -17,7 +23,7 @@ const AddTodo = () => {
         }}>
         {text}
       </TextInput>
-      <TouchableOpacity onPress={() => dispatch(addTodo(text))}>
+      <TouchableOpacity onPress={() => dispatch(addTodo(dummyTodo))}>
         <View>
           <Text>Add</Text>
         </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {View, TouchableOpacity, Text} from 'react-native';
-import {setVisibilityFilter, VisibilityFilters} from '../actions';
+import {setVisibilityFilter, VisibilityFilters} from '../types/actions';
 
 const {SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED} = VisibilityFilters;
 

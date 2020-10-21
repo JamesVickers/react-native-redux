@@ -1,4 +1,4 @@
-import {VisibilityFilters} from '../actions';
+import {VisibilityFilters} from '../types/actions';
 
 const {SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED} = VisibilityFilters;
 

@@ -7,7 +7,7 @@ import {ThemeProvider} from './src/context/ThemeContext';
 import theme from './src/styles/ThemeStyles';
 import TodoApp from './src/components/TodoApp';
 import HomeScreen from './src/components/HomeScreen';
-import store from './src/store';
+import {store} from './src/store';
 
 const Stack = createStackNavigator();
 

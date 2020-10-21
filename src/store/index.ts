@@ -1,6 +1,11 @@
-import {createStore} from 'redux';
-import rootReducer from '../reducers';
+import {createStore, combineReducers} from 'redux';
+import {visibilityFilterReducer, todosReducer} from '../reducers';
 
-const store = createStore(rootReducer);
+export const rootReducer = combineReducers({
+    visibilityFilterReducer,
+    todosReducer,
+  });
 
-export default store;
+export type AppState = ReturnType<typeof rootReducer>
+
+export const store = createStore(rootReducer);

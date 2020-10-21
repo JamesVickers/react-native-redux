@@ -1,53 +1,26 @@
-/*
- * action types
- */
-
-export const ADD_TODO = 'ADD_TODO';
-export const TOGGLE_TODO = 'TOGGLE_TODO';
-export const REMOVE_TODO = 'REMOVE_TODO';
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-
-/*
- * other constants
- */
-
-export const VisibilityFilters = {
-  SHOW_ALL: 'SHOW_ALL',
-  SHOW_ACTIVE: 'SHOW_ACTIVE',
-  SHOW_COMPLETED: 'SHOW_COMPLETED',
-};
-
-/*
- * action creators
- */
+import {Todo} from '../types/todo'
+import {AppActions, ADD_TODO, TOGGLE_TODO, REMOVE_TODO, SET_VISIBILITY_FILTER} from '../types/actions'
 
 let nextTodoId = 0;
 
-export const addTodo = (text) => ({
-  type: ADD_TODO,
-  payload: {
-    id: ++nextTodoId,
-    text,
-  },
+export const addTodo = (todo: Todo): AppActions => ({
+    type: ADD_TODO,
+    todo
 });
 
-export const toggleTodo = (todoId) => ({
-  type: TOGGLE_TODO,
-  payload: {
-    todoId,
-  },
+export const toggleTodo = (id: number): AppActions => ({
+    type: TOGGLE_TODO,
+    id
 });
 
-export const removeTodo = (todoId) => ({
-  type: REMOVE_TODO,
-  payload: {
-    todoId,
-  },
+export const removeTodo = (id: number): AppActions => ({
+    type: REMOVE_TODO,
+    id,
 });
 
-export const setVisibilityFilter = (filter) => ({
-  type: SET_VISIBILITY_FILTER,
-  payload: {
+export const setVisibilityFilter = (filter: string): AppActions => ({
+    type: SET_VISIBILITY_FILTER,
     filter,
-  },
 });
+
+  
